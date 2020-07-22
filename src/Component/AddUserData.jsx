@@ -11,6 +11,10 @@ const AddUserData=({getAllUsers,setUserId,users,setDistance,setStartTime,setEndT
 
 
     return (
+        <div className='d-flex flex-column'>
+            <nav style={{width:'100vh'}}>
+                <Link to='/dashboard' className='btn btn-primary ml-3 mt-3' >Dashboard</Link>
+            </nav>
         <div className="d-flex flex-column justify-content-center align-items-center" >
         <h3 className='d-flex justify-content-center mt-5' >Add User Data</h3>
             <div style={{height:"70vh",width:"40vh"}} className="d-flex flex-column border justify-content-center align-items-center">
@@ -51,6 +55,7 @@ const AddUserData=({getAllUsers,setUserId,users,setDistance,setStartTime,setEndT
                 <Link to='./dashboard' className="btn btn-success" onClick={(e)=> addDistanceData(userId,distanceTravelled,startTime,endTime)}>Submit</Link>          
             </div>
         </div>
+    </div>
     )
 }
 

@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import { connect } from 'react-redux';
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import { getAllUsers,sendFilterName,sendFilterStartTime,sendFilterEndTime,filterData } from '../ActionCreator/Action'
 
 const FilterUserData = ( {getAllUsers,users,dropDown,sendFilterStartTime,sendFilterName,sendFilterEndTime,endTimeDropDown,filterName,filterStartTime,filterEndTime,totalDistance,filterData} ) => {
@@ -10,6 +10,10 @@ const FilterUserData = ( {getAllUsers,users,dropDown,sendFilterStartTime,sendFil
     },[])
 
     return (
+        <div className='d-flex flex-column'>
+        <nav style={{width:'100vh'}}>
+            <Link to='/dashboard' className='btn btn-primary ml-3 mt-3' >Dashboard</Link>
+        </nav>
         <div className="d-flex flex-column justify-content-center align-items-center">
            <h3 className='mt-5' >Filter User</h3>
            <div className='form-group' >
@@ -45,6 +49,7 @@ const FilterUserData = ( {getAllUsers,users,dropDown,sendFilterStartTime,sendFil
                 <button type='button' className="btn btn-success" onClick={()=>filterData(users,filterName,filterStartTime,filterEndTime)} disabled={filterName.length<1 && filterStartTime.length<1 &&  filterEndTime.length<1 } >Submit</button> 
                 { totalDistance && <h4 className='text-capitalize mt-5'> {filterName} has travelled {totalDistance}km between {filterStartTime<12?[filterStartTime,'am']:(filterStartTime===12?[filterStartTime,'pm']:[(filterStartTime-12),'pm'])} and {filterEndTime<12?[filterEndTime,'am']:(filterEndTime===12?[filterEndTime,'pm']:[(filterEndTime-12),'pm'])} </h4>}
         </div>
+    </div>
     );
 };
 
