@@ -42,14 +42,13 @@ const FilterUserData = ( {getAllUsers,users,dropDown,sendFilterStartTime,sendFil
                             })}
                     </select>  
                 </div>
-                <button type='button' className="btn btn-success" onClick={()=>filterData(users,filterName,filterStartTime,filterEndTime)} >Submit</button> 
-                { totalDistance && <div className='text-capitalize'> {filterName} has travelled {totalDistance} between {filterStartTime} and {filterEndTime} </div>}
+                <button type='button' className="btn btn-success" onClick={()=>filterData(users,filterName,filterStartTime,filterEndTime)} disabled={filterName.length<1 && filterStartTime.length<1 &&  filterEndTime.length<1 } >Submit</button> 
+                { totalDistance && <h4 className='text-capitalize mt-5'> {filterName} has travelled {totalDistance}km between {filterStartTime<12?[filterStartTime,'am']:(filterStartTime===12?[filterStartTime,'pm']:[(filterStartTime-12),'pm'])} and {filterEndTime<12?[filterEndTime,'am']:(filterEndTime===12?[filterEndTime,'pm']:[(filterEndTime-12),'pm'])} </h4>}
         </div>
     );
 };
 
 const mapStateToProps = (state)=>{
-    console.log(state.app.totalDistance)
     return{
         users: state.app.users, 
         dropDown: state.app.dropDown,
