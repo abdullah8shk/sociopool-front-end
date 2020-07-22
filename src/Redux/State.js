@@ -1,21 +1,18 @@
 
 let initialState = {
   dropDown:Array.from(Array(24).keys()),
-  filterName:'',
-  filterStartTime:'',
-  filterEndTime:'',
   };
   
 
 export  let appReducer = (state = initialState, action)=>{
       let stateCopy = {...state}
-      // console.log(stateCopy)
-      console.log(action)
       switch(action.type){
         case "getAllUsers":
           stateCopy.users = action.payLoad
           stateCopy.userId = action.payLoad[0]._id
           stateCopy.filterName = action.payLoad[0].userName
+          stateCopy.filterStartTime = 0
+          stateCopy.filterEndTime = 0
           return stateCopy
         case "setUserName":
           stateCopy.userName = action.payLoad
@@ -34,10 +31,12 @@ export  let appReducer = (state = initialState, action)=>{
         case "setEndTime":
           stateCopy.endTime = action.payLoad
           return stateCopy
-          case "sendFilterName":
-            stateCopy.filterName = action.payLoad
-            stateCopy.totalDistance = null
-            return stateCopy
+        case "sendFilterName":
+          stateCopy.filterName = action.payLoad
+          stateCopy.totalDistance = null
+          stateCopy.filterStartTime = "0"
+          stateCopy.filterEndTime = "0"
+          return stateCopy
         case "sendFilterStartTime":
           stateCopy.filterStartTime = action.payLoad.res1
           stateCopy.endTimeDropDown = action.payLoad.res2
@@ -54,8 +53,8 @@ export  let appReducer = (state = initialState, action)=>{
         case "filterData":
           stateCopy.totalDistance = action.payLoad
           return stateCopy
-         default:
-            return stateCopy
+        default:
+          return stateCopy
       }
   }
 

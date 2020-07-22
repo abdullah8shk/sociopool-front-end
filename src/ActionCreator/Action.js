@@ -103,12 +103,19 @@ export  function filterData(users,filterName,filterStartTime,filterEndTime){
          filterStartTime <= Number(elem.startTime) &&  Number(elem.endTime) <= filterEndTime   
         )
     })
-    let newData =  response.map(el=>el.distanceTravelled).reduce((acc,curr)=> acc + curr)
-    // console.log(newData)
-    
-    return{
-        type: "filterData",
-        payLoad: newData
+    console.log(response)
+    if(response.length !== 0){
+        let newData =  response.map(el=>el.distanceTravelled).reduce((acc,curr)=> acc + curr)
+        return{
+            type: "filterData",
+            payLoad: newData
+        }
+    }else{
+        return{
+            type: "filterData",
+            payLoad: 0
+        }
     }
+    
 }
 

@@ -19,7 +19,7 @@ const AddUserData=({getAllUsers,setUserId,users,setDistance,setStartTime,setEndT
         <h3 className='d-flex justify-content-center mt-5' >Add User Data</h3>
             <div style={{height:"70vh",width:"40vh"}} className="d-flex flex-column border justify-content-center align-items-center">
                 <div className='form-group' >
-                    <label for="users">User's List:</label>
+                    <label htmlFor="users">User's List:</label>
                     <select className='form-control text-capitalize' id='users' onChange={(e)=> setUserId(e.target.value)} >
                         {users && users.map((element, i) => {
                             return (
@@ -29,11 +29,11 @@ const AddUserData=({getAllUsers,setUserId,users,setDistance,setStartTime,setEndT
                     </select>  
                 </div>
                 <div className="form-group">
-                    <label for="distance">Distance Travelled</label>
+                    <label htmlFor="distance">Distance Travelled</label>
                     <input type="number" className="form-control" id="distance"  placeholder="Distance Travelled" pattern="[0-9]{2}:[0-9]{2}" onChange={(e)=> setDistance(e.target.value)} required />
                 </div>
                 <div className='form-group' >
-                    <label for="startTime">Start Time:</label>
+                    <label htmlFor="startTime">Start Time:</label>
                     <select className='form-control' id='startTime' onChange={(e)=>{setStartTime(e.target.value)}} required>
                         {dropDown && dropDown.map((element, i) => {
                             return (
@@ -43,7 +43,7 @@ const AddUserData=({getAllUsers,setUserId,users,setDistance,setStartTime,setEndT
                     </select>  
                 </div>
                 <div className='form-group' >
-                    <label for="endTime">End Time:</label>
+                    <label htmlFor="endTime">End Time:</label>
                     <select className='form-control' id='endTime' onChange={(e)=>setEndTime(e.target.value)} >
                         {endTimeDropDown && endTimeDropDown.map((element, i) => {
                             return (
